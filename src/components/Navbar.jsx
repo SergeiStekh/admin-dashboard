@@ -6,7 +6,7 @@ import { RiNotification3Line as NotificationIcon } from 'react-icons/ri'
 import { MdKeyboardArrowDown as ArrowDownIcon } from 'react-icons/md'
 import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 import { AvatarImage } from '../data/images'
-import { Cart, Chat, Notification, UserProfile } from '.'
+import { NavButton, Cart, Chat, Notification, UserProfile } from '.'
 import { useStateContext } from '../contexts/ContextProvider'
 
 
@@ -82,22 +82,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
-const NavButton = ({ title, customFunction, icon, color, dotColor }) => (
-  <TooltipComponent 
-    content={title} 
-    position="BottomCenter">
-    <button
-      type="button"
-      onClick={() => customFunction()}
-      style={{ color }}
-      className="relative text-xl rounded-full p-3 hover:bg-light-gray"
-    >
-      <span
-        style={{ backgroundColor: dotColor }}
-        className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
-      />
-      {icon}
-    </button>
-  </TooltipComponent>
-);
