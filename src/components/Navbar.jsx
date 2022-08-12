@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect} from 'react'
 import { AiOutlineMenu as MenuIcon } from 'react-icons/ai'
 import { FiShoppingCart as CartIcon } from 'react-icons/fi'
 import { BsChatLeft as ChatIcon} from 'react-icons/bs'
@@ -11,7 +11,24 @@ import { useStateContext } from '../contexts/ContextProvider'
 
 
 const Navbar = () => {
-  const { isMenuActive, setIsMenuActive, isClicked, setIsClicked } = useStateContext();
+  const { isMenuActive, setIsMenuActive, isClicked, setIsClicked, screenSize, setScreenSize } = useStateContext();
+
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, [setScreenSize]);
+
+  useEffect(() => {
+    if (screenSize <= 900) {
+      setIsMenuActive(false);
+    } else {
+      setIsMenuActive(true);
+    }
+  }, [screenSize, setIsMenuActive]);
+  
 
   function handleClick(navElementName) {
     setIsClicked((prev) => {
