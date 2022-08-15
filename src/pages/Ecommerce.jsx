@@ -31,9 +31,9 @@ const ECommerce = () => {
         </div>
 
 
-        <div className='flex m-3 flex-wrap justify-center gap-1 items-center'>
+        <div className='flex m-3 flex-wrap justify-evenly gap-1 items center'>
           {earningData.map((item) => (
-            <div key={item.title} className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56 p-4 pt-9 rounded-2xl'>
+            <div key={item.title} className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56 p-4 pt-9 rounded-2xl lg:grow min-w-[132px]'>
               <button type="button" style={{color: item.iconColor, backgroundColor: item.iconBg}} className='text-2xl opacity-0.9 rounded-full p-4 hover:drop-shadow-xl '>
                 {item.icon}
               </button>
@@ -63,7 +63,7 @@ const ECommerce = () => {
                 </div>
               </div>
               <div className='mt-10 flex gap-10 flex-wrap justify-center'>
-                <div className='border-r-1 border-color m-4 pr-10'>
+                <div className='border-r-1 border-color m-4 pr-10 w-full sm:w-auto'>
                   <div>
                     <p>
                       <span className='text-3xl font-semibold'>$93</span>
