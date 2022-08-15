@@ -16,6 +16,7 @@ export { default as Chat } from './Chat'
 
 export { default as LinearDiagram } from './Diagrams/LinearDiagram'
 export { default as AreaDiagram } from './Diagrams/AreaDiagram'
+export { default as BarDiagram } from './Diagrams/BarDiagram'
 export { default as PieDiagram } from './Diagrams/PieDiagram'
 export { default as SparkLineDiagram } from './Diagrams/SparkLineDiagram'
 export { default as StackedDiagram } from './Diagrams/StackedDiagram'
