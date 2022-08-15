@@ -5,9 +5,10 @@ import {MdOutlineCancel as CloseIcon} from 'react-icons/md'
 import {TooltipComponent} from '@syncfusion/ej2-react-popups'
 import {links} from '../data/sidebarLinks'
 import { useStateContext } from '../contexts/ContextProvider'
+import { CurrentLegendRect } from '@syncfusion/ej2/heatmap'
 
 const Sidebar = () => {
-    const {isMenuActive, setIsMenuActive, screenSize} = useStateContext();
+    const {isMenuActive, setIsMenuActive, screenSize, currentColor} = useStateContext();
 
     function handleSidebarClose() {
       if (isMenuActive && screenSize < 900) {
@@ -38,7 +39,14 @@ const Sidebar = () => {
                     {item.title}
                   </p>
                   {item.links.map(link => (
-                    <NavLink to={`/${link.name}`} key={link.name} onClick={handleSidebarClose} className={({isActive}) => isActive ? activeLinkStyles : regularLinkStyles}>
+                    <NavLink 
+                      to={`/${link.name}`} 
+                      key={link.name} 
+                      onClick={handleSidebarClose} 
+                      style={({isActive}) => ({
+                        backgroundColor: isActive ? currentColor : ''
+                      })}
+                      className={({isActive}) => isActive ? activeLinkStyles : regularLinkStyles}>
                       {link.icon} 
                       <span className='capitalize'>{link.name}</span>
                     </NavLink>

@@ -11,7 +11,7 @@ import { useStateContext } from '../contexts/ContextProvider'
 
 
 const Navbar = () => {
-  const { isMenuActive, setIsMenuActive, isClicked, setIsClicked, screenSize, setScreenSize } = useStateContext();
+  const { setIsMenuActive, isClicked, setIsClicked, screenSize, setScreenSize, currentColor } = useStateContext();
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -50,7 +50,7 @@ const Navbar = () => {
         title={"Menu"} 
         customFunction={() => setIsMenuActive(prev => !prev)} 
         icon={<MenuIcon/>} 
-        color="red" 
+        color={currentColor} 
         dotColor="blue"
       />
       <div className='flex align-middle justify-center'>
@@ -58,20 +58,20 @@ const Navbar = () => {
           title={"Cart"} 
           customFunction={() => handleClick('cart')} 
           icon={<CartIcon/>} 
-          color="blue" 
+          color={currentColor} 
         />
         <NavButton 
           title={"Chat"} 
           customFunction={() => handleClick('chat')} 
           icon={<ChatIcon/>} 
-          color="blue" 
+          color={currentColor} 
           dotColor="#03C9D7"
         />
         <NavButton 
           title={"Notification"} 
           customFunction={() => handleClick('notification')} 
           icon={<NotificationIcon/>} 
-          color="blue" 
+          color={currentColor} 
           dotColor="#03C9D7"
         />
         <TooltipComponent content="Profile" position='BottomCenter'>

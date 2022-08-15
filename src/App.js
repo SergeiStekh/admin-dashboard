@@ -8,8 +8,11 @@ import { useStateContext } from './contexts/ContextProvider'
 import './App.css'
 
 const App = () => {
-    const {isMenuActive} = useStateContext();
+    const { currentColor, currentMode } = useStateContext();
+
+    const { isMenuActive, themeSettings, setThemeSettings } = useStateContext();
     return (
+        <div className={currentMode === 'Dark' ? 'dark' : ''}>
         <Router>
             <div className='flex relative dark:bg-main-dark-bg'>
                 <div
@@ -24,9 +27,13 @@ const App = () => {
                             type='button'
                             className='text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white'
                             style={{
-                            background: 'blue',
+                            background: currentColor,
                             borderRadius: '50%'
-                        }}>
+                            }}
+                            onClick={
+                            () => setThemeSettings((prev) => !prev)
+                            }
+                        >
                             <SettingsIcon/>
                         </button>
                     </TooltipComponent>
@@ -51,6 +58,8 @@ const App = () => {
                         <Navbar/>
                 </div>
                 <div>
+                    { themeSettings &&        <ThemeSettings/>
+                    }
                     <Routes>
                         <Route path='/' element={<Ecommerce/>}/>
                         <Route path='/ecommerce' element={<Ecommerce/>}/> 
@@ -78,6 +87,7 @@ const App = () => {
                 </div>
             </div>
         </Router>
+        </div>
     )
 }
 
